@@ -33,16 +33,16 @@ export default function RootLayout({
       isTokenValid = false;
     } else {
       //check if token is still valid
-      try {
-        const resp = await axios.get("/api/user/checkAuthen", {
+      
+        await axios.get("/api/user/checkAuthen", {
           headers: { Authorization: `Bearer ${token}` },
+        }).catch((err) => {
+          console.log(err.message);
+          isTokenValid = false;
         });
         $authenStore.set({ token, authenUsername });
-      } catch (err) {
-        console.log(err.message);
-        isTokenValid = false;
       }
-    }
+    
 
     //go to login if not logged in yet and trying to access protected route
     if (pathname !== "/" && !isTokenValid) {
@@ -80,8 +80,8 @@ export default function RootLayout({
               </Title>
               {children}
               <Footer
-                studentId="660610999"
-                fullName="Dome Potikanond"
+                studentId="660610799"
+                fullName="Suphaloek Khueanphet"
                 year="2024"
               />
             </Container>

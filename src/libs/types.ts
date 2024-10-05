@@ -20,6 +20,7 @@ export interface Student {
 export interface Course {
   courseNo: string;
   title: string;
+  course: Course;
 }
 
 export interface Enrollment {
